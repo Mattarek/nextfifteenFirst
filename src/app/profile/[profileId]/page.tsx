@@ -1,10 +1,21 @@
-import React from "react";
+import { Metadata } from "next";
 
-export default async function Page({
-	params
-}: {
-	params: Promise<{ profileId: string }>;
-}) {
-	const { profileId } = await params;
-	return <div>{profileId}</div>;
+type Props = {
+	params: Promise<{
+		profileId: string;
+	}>;
+};
+
+export const generateMetadata = async ({ params }: Props) => {
+	const id = (await params).profileId;
+
+	return {
+		title: `Product ${id}`
+	};
+};
+
+export default async function Page({ params }: Props) {
+	const id = (await params).profileId;
+
+	return <h1>Details about product {id}</h1>;
 }
