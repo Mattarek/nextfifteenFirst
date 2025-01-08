@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const navLinks = [
 	{
@@ -22,11 +23,18 @@ export default function AuthLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	const [input, setInput] = useState("");
 	const pathname = usePathname();
 	console.log(pathname);
 
 	return (
 		<div>
+			<div>
+				<input
+					value={input}
+					onChange={(e) => setInput(e.target.value)}
+				/>
+			</div>
 			{navLinks.map((link) => (
 				<Link href={link.href} key={link.name}>
 					{link.name}

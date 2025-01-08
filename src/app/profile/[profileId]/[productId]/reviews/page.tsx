@@ -1,5 +1,5 @@
 import React from "react";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 async function Page({
 	params
@@ -8,9 +8,9 @@ async function Page({
 }) {
 	const { productId, profileId } = await params;
 	if (parseInt(productId) > 1000) {
-		notFound();
+		redirect("/products");
 	}
-	
+
 	return (
 		<div>
 			<div>productId: {productId}</div>
