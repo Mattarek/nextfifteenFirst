@@ -14,7 +14,9 @@ const ErrorSimulator = ({
 }) => {
 	const [error, setError] = useState(false);
 
-	if (error) throw new Error(message);
+	if (error) {
+		throw new Error(message);
+	}
 
 	return (
 		<button
